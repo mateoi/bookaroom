@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome</title>
+    <title>Welcomeeeeeeeee</title>
 </head>
 <body >
-            <h2>Heya!</h2>
+            <h2>Heya Sergiu!</h2>
             <table width="750">
               <tr>  
                 <th align="left" width="200">    Java Property  </th>  
