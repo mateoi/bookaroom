@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 /**
  * Created by andrewwg94 on 11/26/14.
  */
+@WebServlet("/myServlet")
 public class HelloAndrew extends HttpServlet{
     private String message;
 
