@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome</title>
+    <title>Welcomeeeeeeeee</title>
 </head>
 <body >
             <h2>Heya Sergiu!</h2>
