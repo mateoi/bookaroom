@@ -17,7 +17,7 @@ public class HelloAndrew extends HttpServlet {
     public void init() throws ServletException
     {
         // Do required initialization
-        message = "Hello World";
+        message = "Hello Andrew";
     }
 
     public void doGet(HttpServletRequest request,
@@ -30,6 +30,7 @@ public class HelloAndrew extends HttpServlet {
         // Actual logic goes here.
         PrintWriter out = response.getWriter();
         out.println("<h1>" + message + "</h1>");
+
     }
 
     public void destroy()
