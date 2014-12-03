@@ -1,4 +1,6 @@
-package user;
+package core;
+
+import utils.DBAdapter;
 
 public class Room {
 	

@@ -1,6 +1,8 @@
-package user;
+package core;
 
 import java.sql.Date;
+
+import utils.DBAdapter;
 
 public class CommonUser extends User {
 

@@ -1,6 +1,8 @@
-package user;
+package core;
 
 import java.sql.Date;
+
+import utils.DBAdapter;
 
 public abstract class User {
 	private String username;
