@@ -31,7 +31,7 @@ public class DBAdapter {
 		return conn;
 	} 
 	
-	private static void dbExecute(String sqlQuery,ArrayList<Object> arguments) throws SQLException{
+	public static void dbExecute(String sqlQuery,ArrayList<Object> arguments) throws SQLException{
 		Connection conn = dbConnect();
 		
 		try{
