@@ -5,7 +5,7 @@
     <title>Book A Room: Create Account</title>
 </head>
 <body>
-<form action="accountCreated.jsp" method="get">
+<form action="accountCreated.jsp" method="post">
     Username: <input type="text" name="username">
     Password: <input type="password" name="password">
     Retype Password: <input type="password" name="password_retyped">
