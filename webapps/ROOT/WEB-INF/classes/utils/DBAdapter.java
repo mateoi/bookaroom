@@ -11,10 +11,6 @@ import core.User;
 
 
 public class DBAdapter {
-
-	public void changePassword(User user, String hashedPassword) {
-			
-	}
 	
 	private static Connection dbConnect(){
         Connection conn = null;
