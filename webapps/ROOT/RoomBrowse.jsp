@@ -20,7 +20,7 @@
     out.print("hi");
     try {
         ResultSet rs = DBAdapter.dbExecute("SELECT * FROM rooms", null,false);
-        //out.print(rs); 
+        //out.print(rs);
     } catch (SQLException e) {
         e.printStackTrace();
     }

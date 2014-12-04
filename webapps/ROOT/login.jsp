@@ -1,6 +1,7 @@
 <%@ page import="utils.DBAdapter" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Connection" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +15,8 @@
     ArrayList<Object> list = new ArrayList<Object>();
     list.add(username);
     if(username!=null && password !=null && !username.equals("") && !password.equals("")) {
-        ResultSet rs = DBAdapter.dbExecute("SELECT username, password FROM users WHERE username=?",list , false);
-        out.println(rs);
+        Connection cxn = DBAdapter.dbConnect();
+        DBAdapter
     }
 %>
 <form>
