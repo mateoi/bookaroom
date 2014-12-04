@@ -33,7 +33,6 @@ public abstract class User {
 	}
 
 	public void setHashedPassword(String hashedPassword) throws Exception {
-		DBAdapter.dbExecute("UPDATE users SET password=? WHERE username=?", new ArrayList<Object>(Arrays.asList(hashedPassword,this.username)),true);
 		this.hashedPassword = hashedPassword;
 	}
 }

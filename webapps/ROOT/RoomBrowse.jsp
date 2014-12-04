@@ -19,15 +19,24 @@
 <body>
 <%
 	
-    out.print("hi");
-	Connection conn = DBAdapter.dbConnect();
+	Connection conn = null;
+	try{
+		conn = DBAdapter.dbConnect();
+	}catch(Exception ex){
+		throw ex;
+	}
 	try {
     	ResultSet rs = DBAdapter.dbExecute("SELECT * FROM rooms", new ArrayList<Object>(),false,conn);
         while(rs.next()){
-        	out.print(rs.getString("name"));
+        	out.print(" Name:" + rs.getString("name") + "<br>");
+        	out.print(" Size:" + rs.getString("size") + "<br>");
+        	out.print(" Location:" + rs.getString("location") + "<br>");
+        	out.print(" Equipment:" + rs.getString("equipment") + "<br>");
+        	out.print(" Rating:" + rs.getString("rating") + "<br>");
+        	out.print(" Review:" + rs.getString("review") + "<br>");
+        	out.print(" Rank:" + rs.getString("rank") + "<br>");
+        	out.print("<br>");
         }
-        
-        out.print("here");
     } catch (SQLException e) {
     	out.print("there");
         e.printStackTrace(new PrintWriter(out));
