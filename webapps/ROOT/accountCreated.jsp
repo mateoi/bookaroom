@@ -5,7 +5,6 @@
 <%@ page import="java.text.DateFormat" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="com.mysql.jdbc.Driver" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +22,7 @@
     arguments.add(dateFormat.format(date));
 
     out.print("hi");
+    Class.forName("com.mysql.jdbc.Driver");
     DBAdapter.dbExecute("INSERT INTO users VALUES (?,?,?,?)", arguments, true);
 
 
