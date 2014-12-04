@@ -11,13 +11,14 @@ import java.util.Date;
 public class DBAdapter {
 	
 	private static Connection dbConnect(){
-		Connection conn = null;
+        Connection conn = null;
 		String url  = "jdbc:mysql://bookaroom.cywsxh61j8sj.eu-west-1.rds.amazonaws.com/bookaroomdb";
 		String user = "user";
 		String password  = "abcd1234";
 		try {
+            Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         } 
 		return conn;
@@ -54,7 +55,7 @@ public class DBAdapter {
 		ArrayList<Object> arguments = new ArrayList<Object>();
 		arguments.add(10);
 		arguments.add("MOM");
-		//dbExecute("SELECT * FROM ? WHERE id = ? ",arguments, false);
+		dbExecute("SELECT * FROM ? WHERE id = ? ",arguments, false);
 
 	}
 }
