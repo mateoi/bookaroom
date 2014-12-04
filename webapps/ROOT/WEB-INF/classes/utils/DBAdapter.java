@@ -63,7 +63,7 @@ public class DBAdapter {
 		ArrayList<Object> arguments = new ArrayList<Object>();
 		arguments.add(10);
 		arguments.add("MOM");
-		dbExecute("SELECT * FROM ? WHERE id = ? ",arguments, false);
+		//dbExecute("SELECT * FROM ? WHERE id = ? ",arguments, false);
 
 	}
 }
