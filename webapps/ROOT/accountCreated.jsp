@@ -15,6 +15,7 @@
 </head>
 <body>
 <%
+	
     ArrayList<Object> arguments = new ArrayList<Object>();
     arguments.add(request.getParameter("username"));
     arguments.add(request.getParameter("password"));
@@ -22,7 +23,6 @@
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
     arguments.add(dateFormat.format(date));
-
     out.print("hi");
 
     try {
@@ -30,7 +30,6 @@
     } catch (SQLException e) {
         e.printStackTrace();
     }
-
 
 %>
 </body>

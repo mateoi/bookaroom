@@ -7,8 +7,6 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Date;
 
-import core.User;
-
 
 public class DBAdapter {
 	
