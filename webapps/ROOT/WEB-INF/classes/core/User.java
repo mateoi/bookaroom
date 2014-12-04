@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import utils.DBAdapter;
 
 public abstract class User {
@@ -31,7 +32,7 @@ public abstract class User {
 		return hashedPassword;
 	}
 
-	public void setHashedPassword(String hashedPassword) throws SQLException {
+	public void setHashedPassword(String hashedPassword) throws Exception {
 		DBAdapter.dbExecute("UPDATE users SET password=? WHERE username=?", new ArrayList<Object>(Arrays.asList(hashedPassword,this.username)),true);
 		this.hashedPassword = hashedPassword;
 	}
