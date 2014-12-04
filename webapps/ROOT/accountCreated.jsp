@@ -5,6 +5,8 @@
 <%@ page import="java.text.DateFormat" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="java.sql.SQLException" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +24,12 @@
     arguments.add(dateFormat.format(date));
 
     out.print("hi");
-    Class.forName("com.mysql.jdbc.Driver");
-    DBAdapter.dbExecute("INSERT INTO users VALUES (?,?,?,?)", arguments, true);
 
+    try {
+        DBAdapter.dbExecute("INSERT INTO users VALUES (?,?,?,?)", arguments, true);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
 
 
 %>

@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,13 +17,14 @@ public class DBAdapter {
 	}
 	
 	private static Connection dbConnect(){
-		Connection conn = null;
+        Connection conn = null;
 		String url  = "jdbc:mysql://bookaroom.cywsxh61j8sj.eu-west-1.rds.amazonaws.com/bookaroomdb";
 		String user = "user";
 		String password  = "abcd1234";
 		try {
+            Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         } 
 		return conn;
