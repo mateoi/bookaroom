@@ -3,8 +3,9 @@ package utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -25,18 +26,16 @@ public class DBAdapter {
 		try {
             conn = DriverManager.getConnection(url, user, password);
         } catch (SQLException ex) {
-        	ex.printStackTrace();
-        	conn = null;
+            ex.printStackTrace();
         } 
 		return conn;
-	} 
-	
-	public static void dbExecute(String sqlQuery,ArrayList<Object> arguments) throws SQLException{
-		Connection conn = dbConnect();
-		
+	}
+	public static void dbExecute(String sqlQuery,ArrayList<Object> arguments, boolean update) throws SQLException{
+        Connection conn = dbConnect();
+
 		try{
-			java.sql.PreparedStatement statement = conn.prepareStatement(sqlQuery);
-			
+			PreparedStatement statement = conn.prepareStatement(sqlQuery);
+
 			for(int i = 0; i < arguments.size(); i++){
 				int index = i+1;
 				if(arguments.get(i) instanceof Integer){
@@ -49,9 +48,10 @@ public class DBAdapter {
 					statement.setDouble(index, (Double)arguments.get(i));
 				}
 			}
-			statement.executeQuery();
+			if(update) statement.executeUpdate();
+            else statement.executeQuery();
 		}catch(Exception ex){
-			System.out.println(ex);
+            throw ex;
 		}finally{
 			conn.close();
 		}
@@ -62,6 +62,7 @@ public class DBAdapter {
 		ArrayList<Object> arguments = new ArrayList<Object>();
 		arguments.add(10);
 		arguments.add("MOM");
-		dbExecute("SELECT * FROM ? WHERE id = ? ",arguments);
+		dbExecute("SELECT * FROM ? WHERE id = ? ",arguments, false);
+
 	}
 }
