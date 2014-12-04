@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="utils.DBAdapter" %>
@@ -7,6 +8,7 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Connection" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,11 +20,20 @@
 <%
 	
     out.print("hi");
-    try {
-        ResultSet rs = DBAdapter.dbExecute("SELECT * FROM rooms", null,false);
-        //out.print(rs);
+
+	Connection conn = DBAdapter.dbConnect();
+	try {
+    	ResultSet rs = DBAdapter.dbExecute("SELECT * FROM rooms", new ArrayList<Object>(),false,conn);
+        while(rs.next()){
+        	out.print(rs.getString("name"));
+        }
+        
+        out.print("here");
     } catch (SQLException e) {
-        e.printStackTrace();
+    	out.print("there");
+        e.printStackTrace(new PrintWriter(out));
+    }finally{
+    	conn.close();
     }
 
 %>

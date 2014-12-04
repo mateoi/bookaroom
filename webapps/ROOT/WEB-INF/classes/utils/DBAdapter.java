@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class DBAdapter {
 	
-	private static Connection dbConnect(){
+	public static Connection dbConnect() throws Exception{
         Connection conn = null;
 		String url  = "jdbc:mysql://bookaroom.cywsxh61j8sj.eu-west-1.rds.amazonaws.com/bookaroomdb";
 		String user = "user";
@@ -24,16 +24,14 @@ public class DBAdapter {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            throw ex;
         } 
 		return conn;
 	}
-	public static ResultSet dbExecute(String sqlQuery,ArrayList<Object> arguments, boolean update) throws SQLException{
-        Connection conn = dbConnect();
-
+	public static ResultSet dbExecute(String sqlQuery,ArrayList<Object> arguments, boolean update, Connection conn) throws Exception{
+        
 		try{
 			PreparedStatement statement = conn.prepareStatement(sqlQuery);
-
 			for(int i = 0; i < arguments.size(); i++){
 				int index = i+1;
 				if(arguments.get(i) instanceof Integer){
@@ -46,15 +44,13 @@ public class DBAdapter {
 					statement.setDouble(index, (Double)arguments.get(i));
 				}
 			}
-			if(update) {
+			if(update){
 				statement.executeUpdate();
 				return null;
 			}
-            else return statement.executeQuery();
+            return statement.executeQuery();
 		}catch(Exception ex){
             throw ex;
-		}finally{
-			conn.close();
 		}
 	}
 	
