@@ -21,7 +21,6 @@
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
     arguments.add(dateFormat.format(date));
-
     out.print("hi");
     Class.forName("com.mysql.jdbc.Driver");
     DBAdapter.dbExecute("INSERT INTO users VALUES (?,?,?,?)", arguments, true);
