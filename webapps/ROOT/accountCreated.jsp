@@ -13,6 +13,7 @@
 </head>
 <body>
 <%
+	
     ArrayList<Object> arguments = new ArrayList<Object>();
     arguments.add(request.getParameter("username"));
     arguments.add(request.getParameter("password"));
@@ -24,9 +25,6 @@
     out.print("hi");
     Class.forName("com.mysql.jdbc.Driver");
     DBAdapter.dbExecute("INSERT INTO users VALUES (?,?,?,?)", arguments, true);
-
-
-
 %>
 </body>
 </html>

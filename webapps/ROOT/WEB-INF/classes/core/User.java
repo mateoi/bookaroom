@@ -1,20 +1,20 @@
 package core;
 
 import java.sql.Date;
-
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import utils.DBAdapter;
 
 public abstract class User {
 	private String username;
 	private String hashedPassword;
 	private boolean isAdmin;
-	public final DBAdapter database;
 	
 	public User(String username, String hashedPassword, boolean isAdmin, DBAdapter database) {
 		this.username = username;
-		this.setHashedPassword(hashedPassword);
+		this.hashedPassword=hashedPassword;
 		this.isAdmin = isAdmin;
-		this.database = database;
 	}
 	
 	public boolean isAdmin() {
@@ -31,8 +31,8 @@ public abstract class User {
 		return hashedPassword;
 	}
 
-	public void setHashedPassword(String hashedPassword) {
-		database.changePassword(this, hashedPassword);
+	public void setHashedPassword(String hashedPassword) throws SQLException {
+		DBAdapter.dbExecute("UPDATE users SET password=? WHERE username=?", new ArrayList<Object>(Arrays.asList(hashedPassword,this.username)),true);
 		this.hashedPassword = hashedPassword;
 	}
 }

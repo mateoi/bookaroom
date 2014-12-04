@@ -4,19 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import core.User;
-
 
 public class DBAdapter {
-
-	public void changePassword(User user, String hashedPassword) {
-			
-	}
 	
 	private static Connection dbConnect(){
 		Connection conn = null;
@@ -62,7 +54,7 @@ public class DBAdapter {
 		ArrayList<Object> arguments = new ArrayList<Object>();
 		arguments.add(10);
 		arguments.add("MOM");
-		dbExecute("SELECT * FROM ? WHERE id = ? ",arguments, false);
+		//dbExecute("SELECT * FROM ? WHERE id = ? ",arguments, false);
 
 	}
 }
