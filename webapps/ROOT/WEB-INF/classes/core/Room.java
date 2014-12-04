@@ -10,14 +10,12 @@ public class Room {
 	private String roomNumber; // again: strange room numbers e.g. Room 16A
 	private int capacity;
 	private String[] features;
-	public final DBAdapter database;
 	
 	public Room(String name,
 				String streetAddress,
 				String floor, 
 				String roomNumber, 
 				int capacity, 
-				DBAdapter database,
 				String... features) 
 	{
 		this.name = name;
@@ -26,7 +24,6 @@ public class Room {
 		this.roomNumber = roomNumber;
 		this.capacity = capacity;
 		this.features = features;
-		this.database = database;
 	}
 	
 	public String[] getLocation()	{

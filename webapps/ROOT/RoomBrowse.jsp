@@ -6,20 +6,21 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.ResultSet" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Book A Room: Account created</title>
+    <title>Book A Room: Browse</title>
 </head>
 <body>
 <%
 	
-    ArrayList<Object> arguments = new ArrayList<Object>();
     out.print("hi");
     try {
-        DBAdapter.dbExecute("INSERT INTO users VALUES (?,?,?,?)", arguments, false);
+        ResultSet rs = DBAdapter.dbExecute("SELECT * FROM rooms", null,false);
+        //out.print(rs); 
     } catch (SQLException e) {
         e.printStackTrace();
     }
