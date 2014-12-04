@@ -2,12 +2,17 @@ package utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Date;
 
-
+/***
+ * 
+ * @author xosauce
+ *		Only static access. 
+ */
 public class DBAdapter {
 	
 	private static Connection dbConnect(){
@@ -23,7 +28,7 @@ public class DBAdapter {
         } 
 		return conn;
 	}
-	public static void dbExecute(String sqlQuery,ArrayList<Object> arguments, boolean update) throws SQLException{
+	public static ResultSet dbExecute(String sqlQuery,ArrayList<Object> arguments, boolean update) throws SQLException{
         Connection conn = dbConnect();
 
 		try{
@@ -41,8 +46,11 @@ public class DBAdapter {
 					statement.setDouble(index, (Double)arguments.get(i));
 				}
 			}
-			if(update) statement.executeUpdate();
-            else statement.executeQuery();
+			if(update) {
+				statement.executeUpdate();
+				return null;
+			}
+            else return statement.executeQuery();
 		}catch(Exception ex){
             throw ex;
 		}finally{

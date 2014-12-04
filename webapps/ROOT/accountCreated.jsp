@@ -11,22 +11,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Book A Room: Create Account</title>
+    <title>Book A Room: Browse</title>
 </head>
 <body>
 <%
 	
     ArrayList<Object> arguments = new ArrayList<Object>();
-    arguments.add(request.getParameter("username"));
-    arguments.add(request.getParameter("password"));
-    arguments.add(request.getParameter("email"));
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Date date = new Date();
-    arguments.add(dateFormat.format(date));
     out.print("hi");
-
     try {
-        DBAdapter.dbExecute("INSERT INTO users VALUES (?,?,?,?)", arguments, true);
+        DBAdapter.dbExecute("INSERT INTO users VALUES (?,?,?,?)", arguments, false);
     } catch (SQLException e) {
         e.printStackTrace();
     }
