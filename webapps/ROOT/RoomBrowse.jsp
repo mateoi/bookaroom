@@ -1,14 +1,10 @@
 <%@page import="java.io.PrintWriter"%>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.Arrays" %>
 <%@ page import="utils.DBAdapter" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.text.DateFormat" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Connection" %>
+<%@ page import="utils.LoginSystem" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,14 +13,14 @@
     <title>Book A Room: Browse</title>
 </head>
 <body>
-<%
-	Connection conn = null;
-	try{
-		conn = DBAdapter.dbConnect();
-	}catch(Exception ex){
-		throw ex;
-	}
-	try {
+<%  if(!LoginSystem.isAuthenticated(session, request)) {
+        response.sendRedirect("/login.jsp");
+        return;
+    }
+
+    Connection conn = null;
+    try {
+        conn = DBAdapter.dbConnect();
     	ResultSet rs = DBAdapter.dbExecute("SELECT * FROM rooms", new ArrayList<Object>(),false,conn);
         while(rs.next()){
         	out.print(" Name:" + rs.getString("name") + "<br>");
@@ -36,11 +32,10 @@
         	out.print(" Rank:" + rs.getString("rank") + "<br>");
         	out.print("<br>");
         }
-    } catch (SQLException e) {
-    	out.print("there");
+    } catch (Exception e) {
         e.printStackTrace(new PrintWriter(out));
     }finally{
-    	conn.close();
+        if(conn!=null) try{conn.close();} catch(SQLException e) {e.printStackTrace();}
     }
 
 %>

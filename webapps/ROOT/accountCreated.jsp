@@ -6,6 +6,9 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="utils.LoginSystem" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,11 +20,27 @@
 <%
 	
     ArrayList<Object> arguments = new ArrayList<Object>();
-    out.print("hi");
+    arguments.add(request.getParameter("username"));
+    arguments.add(request.getParameter("password"));
+    arguments.add(request.getParameter("email"));
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date date = new Date();
+    arguments.add(dateFormat.format(date));
+
+    Connection cxn = null;
     try {
-        DBAdapter.dbExecute("INSERT INTO users VALUES (?,?,?,?)", arguments, false);
-    } catch (SQLException e) {
+        cxn = DBAdapter.dbConnect();
+        ResultSet rs = DBAdapter.dbExecute("SELECT * FROM users WHERE username = ?", arguments.subList(0,1), false, cxn);
+        if(rs.next()) {
+            out.println("User already exists!");
+            return;
+        }
+        DBAdapter.dbExecute("INSERT INTO users VALUES (?,?,?,?)", arguments, true, cxn);
+        LoginSystem.saveSession(session, request, response, request.getParameter("username"));
+    } catch (Exception e) {
         e.printStackTrace();
+    } finally {
+        if(cxn!=null) try{cxn.close();} catch(SQLException e) {e.printStackTrace();}
     }
 
 %>

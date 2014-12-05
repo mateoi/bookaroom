@@ -1,3 +1,5 @@
+<%@ page import="org.apache.commons.codec.digest.DigestUtils" %>
+<%@ page import="utils.LoginSystem" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,14 @@
           - more button to show about, contact, and help info
 ----------------------------------------------------------------------------------------------------------------
       </pre>
-<a href="login.jsp">Login</a>
-<a href="RoomBrowse.jsp">Browse</a>
+
+<a href="RoomBrowse.jsp">Browse</a><br>
+<%
+    if(LoginSystem.isAuthenticated(session, request)) {
+        out.println("LOGEED IN AS: " + session.getAttribute("username"));
+        out.println("<a href=\"logout.jsp\">Logout</a>");
+    }
+    else out.println("<a href=\"login.jsp\">Please Login</a>");
+%>
 </body>
 </html>
