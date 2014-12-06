@@ -4,6 +4,8 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.io.PrintWriter" %>
+<%@ page import="utils.LoginSystem" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: andrewwg94
@@ -18,18 +20,21 @@
 </head>
 <body>
     <%
+        if(!LoginSystem.isAuthenticated(session, request)) {
+            response.sendRedirect("/login.jsp");
+            return;
+        }
+        List<Object> arguments = new ArrayList<Object>();
+        arguments.add(session.getAttribute("username"));
         Connection conn = null;
         try {
             conn = DBAdapter.dbConnect();
-            ResultSet rs = DBAdapter.dbExecute("SELECT * FROM rooms", new ArrayList<Object>(), false, conn);
+            ResultSet rs = DBAdapter.dbExecute("SELECT * FROM bookings WHERE username = ?", arguments, false, conn);
             while(rs.next()){
-                out.print(" Name:" + rs.getString("name") + "<br>");
-                out.print(" Size:" + rs.getString("size") + "<br>");
-                out.print(" Location:" + rs.getString("location") + "<br>");
-                out.print(" Equipment:" + rs.getString("equipment") + "<br>");
-                out.print(" Rating:" + rs.getString("rating") + "<br>");
-                out.print(" Review:" + rs.getString("review") + "<br>");
-                out.print(" Rank:" + rs.getString("rank") + "<br>");
+                out.print(" Room: " + rs.getString("room_id") + "<br>");
+                out.print(" Username: " + rs.getString("username") + "<br>");
+                out.print(" From: " + rs.getString("start") + "<br>");
+                out.print(" To: " + rs.getString("end") + "<br>");
                 out.print("<br>");
             }
         } catch (Exception e) {
