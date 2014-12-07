@@ -12,12 +12,12 @@ public class AdminUser extends User {
 	}
 
 	@Override
-	public boolean requestBooking(User user, Room room, Date date) {
+	public boolean requestBooking(User user, Room room, Date start, Date end) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
-	public boolean forceBooking(User user, Room room, Date date) {
+	public boolean forceBooking(User user, Room room, Date start, Date end) {
 		return false;
 	}
 
