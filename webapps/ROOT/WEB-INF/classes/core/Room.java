@@ -27,7 +27,7 @@ public class Room {
 	}
 	
 	public String[] getLocation()	{
-		String[] location = {name, streetAddress, floor, roomNumber};
+		String[] location = {getName(), streetAddress, floor, roomNumber};
 		return location;
 	}
 
@@ -38,7 +38,8 @@ public class Room {
 	public String[] getFeatures()	{
 		return features;
 	}
-	
-	
-	
+
+	public String getName() {
+		return name;
+	}	
 }
