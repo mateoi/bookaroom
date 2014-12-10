@@ -27,7 +27,7 @@
         	out.print(" Size:" + rs.getString("size") + "<br>");
         	out.print(" Location:" + rs.getString("location") + "<br>");
         	out.print(" Equipment:" + rs.getString("equipment") + "<br>");
-        	out.print(" Rating:" + rs.getString("rating") + "<br>");
+        	out.print(" Rating:" + rs.getString("rating") + "<br>");t
         	out.print(" Review:" + rs.getString("review") + "<br>");
         	out.print(" Rank:" + rs.getString("rank") + "<br>");
         	out.print("<br>");

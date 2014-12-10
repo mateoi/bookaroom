@@ -10,6 +10,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import core.Room;
+
 /***
  * 
  * @author xosauce
@@ -48,12 +50,8 @@ public class DBAdapter {
 	}
 	
 	public static void main(String args[]){
-		
-		Date date = new Date();
-		Calendar c= Calendar.getInstance();
-		String h = "12:00";
-		Integer a = Integer.parseInt(h.split(":")[0]);
-		System.out.println(a);
+		List<Room> rs = Search.search(new java.sql.Date(124871), new java.sql.Date(89512895), 7, 0);
+		System.out.println(rs.get(0).getName());
 	}
 
 }
