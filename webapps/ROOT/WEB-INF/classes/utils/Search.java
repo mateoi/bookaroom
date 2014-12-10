@@ -61,8 +61,16 @@ public class Search {
 	}
 	
 	private static List<Room> roomify(ResultSet rs) throws SQLException {
-
-		return null;
+		List<Room> rooms = new ArrayList<Room>();
+		while (rs.next()) {
+			String name = rs.getString("name");
+			String location = rs.getString("location");
+			int size = rs.getInt("size");
+			int features = rs.getInt("equipment");
+			Room r = new Room(name, location, size, features);
+			rooms.add(r);
+		}
+		return rooms;
 	}
 
 }
