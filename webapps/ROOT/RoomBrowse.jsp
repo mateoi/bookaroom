@@ -24,7 +24,7 @@
     	ResultSet rs = DBAdapter.dbExecute("SELECT * FROM rooms", new ArrayList<Object>(),false,conn);
         while(rs.next()){
         	out.print(" Name:" + rs.getString("name") + "<br>");
-        	out.print(" Size:" + rs.getString("size") + "<br>");
+        	out.print(" Size:" + rs.getString("size") + "<br>");  
         	out.print(" Location:" + rs.getString("location") + "<br>");
         	out.print(" Equipment:" + rs.getString("equipment") + "<br>");
         	out.print(" Rating:" + rs.getString("rating") + "<br>");
