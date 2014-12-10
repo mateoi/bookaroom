@@ -18,6 +18,7 @@
 
 <a href="RoomBrowse.jsp">Browse</a><br>
 <a href="MyBookings.jsp">My Bookings</a><br>
+<a href="Search.jsp">Search</a>
 <%
     if(LoginSystem.isAuthenticated(session, request)) {
         out.println("LOGEED IN AS: " + session.getAttribute("username"));
