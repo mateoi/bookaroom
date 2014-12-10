@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -44,6 +45,15 @@ public class DBAdapter {
             return null;
         }
         return statement.executeQuery();
+	}
+	
+	public static void main(String args[]){
+		
+		Date date = new Date();
+		Calendar c= Calendar.getInstance();
+		String h = "12:00";
+		Integer a = Integer.parseInt(h.split(":")[0]);
+		System.out.println(a);
 	}
 
 }
