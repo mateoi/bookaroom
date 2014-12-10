@@ -1,3 +1,28 @@
+<%@ page import="utils.LoginSystem" %>
+<%  boolean isLoggedIn = false;
+    if(LoginSystem.isAuthenticated(session, request)) {
+        System.out.println("LOGEED IN AS: " + session.getAttribute("username"));
+//        out.println("<a href=\"logout.jsp\">Logout</a>");
+        isLoggedIn = true;
+    }
+//    else out.println("<a href=\"login.jsp\">Please Login</a>");
+    out.println("<script src=\"js/jquery.js\"></script><script src='js/toastr.js'></script>" +
+            "<script>window.setTimeout(function(){ toastr.options = {\n" +
+            "  \"closeButton\": false,\n" +
+            "  \"debug\": false,\n" +
+            "  \"progressBar\": false,\n" +
+            "  \"positionClass\": \"toast-top-center\",\n" +
+            "  \"onclick\": null,\n" +
+            "  \"showDuration\": \"300\",\n" +
+            "  \"hideDuration\": \"1000\",\n" +
+            "  \"timeOut\": \"5000\",\n" +
+            "  \"extendedTimeOut\": \"1000\",\n" +
+            "  \"showEasing\": \"swing\",\n" +
+            "  \"hideEasing\": \"linear\",\n" +
+            "  \"showMethod\": \"fadeIn\",\n" +
+            "  \"hideMethod\": \"fadeOut\"\n" +
+            "}; toastr.error('Login failed, please try again.'); }, 1000);</script>");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +57,8 @@
     <link href="css/main.css" rel="stylesheet">
     <link href="css/plugins/morris.css" rel="stylesheet">
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/toastr.css" rel="stylesheet"/>
+    <script src='js/toastr.js'></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -109,12 +136,20 @@
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right"> 
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <% if(isLoggedIn){ %>
+                    <p class="navbar-brand" style="float:right"><strong>Logged in as: <%=session.getAttribute("username")%></strong></p>
+                    <% } %>
+                </li>
+                <% if(!isLoggedIn){ %>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
                     Login
                 </button>
+                <% } %>
                 <!-- /.dropdown -->
-                <li class="dropdown">
+                <% if(isLoggedIn){ %>
+                <li class="dropdown" style="float:right">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
@@ -124,11 +159,12 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="/logoutServ"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-user -->
+                    <!--/.dropdown-user -->
                 </li>
+                <% } %>
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
@@ -214,14 +250,14 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <div class="panel-heading">
-                                    <h2 class="panel-title">Please Sign In</h3>
+                                    <h3 class="panel-title">Please Sign In</h3>
                                 </div>
                             </div>
                             <div class="modal-body">
-                                <form role="form" action="login.jsp">
+                                <form role="form" action="/loginServ" method="get">
                                     <fieldset>
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                            <input class="form-control" placeholder="E-mail" name="email" type="text" autofocus>
                                         </div>
                                         <div class="form-group">
                                             <input class="form-control" placeholder="Password" name="password" type="password" value="">
