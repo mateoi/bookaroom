@@ -4,9 +4,25 @@
         <servlet-name>HelloAndrew</servlet-name>
         <servlet-class>HelloAndrew</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>utils.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>utils.Logout</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>HelloAndrew</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/loginServ</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logoutServ</url-pattern>
     </servlet-mapping>
 </web-app>

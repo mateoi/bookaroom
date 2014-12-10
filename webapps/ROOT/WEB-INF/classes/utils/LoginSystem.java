@@ -20,17 +20,16 @@ public class LoginSystem {
         session.setAttribute("username",username);
         session.setAttribute("authsalt",System.currentTimeMillis());
         String cookieVal = session.getAttribute("username") + " "+ request.getRemoteAddr() +" "+ session.getAttribute("authsalt");
-        response.getWriter().println("cookie val: " + cookieVal);
+        System.out.println("cookie val: " + cookieVal);
         Cookie auth = new Cookie("session_id", DigestUtils.md5Hex(cookieVal));
         response.addCookie(auth);
-        response.sendRedirect("/index.jsp");
     }
     public static void forgetSession(HttpServletRequest request, HttpServletResponse response) throws IOException {
         for(Cookie c: request.getCookies()) {
             c.setMaxAge(0);
             response.addCookie(c);
         }
-        response.sendRedirect("/index.jsp");
+     //   response.sendRedirect("/index.jsp");
     }
 
     public static boolean isAuthenticated(HttpSession session, HttpServletRequest request) {
@@ -38,17 +37,20 @@ public class LoginSystem {
         String session_id = "";
         Cookie[] cookies = request.getCookies();
         if(cookies!=null) {
-            for(Cookie c: cookies) if(c.getName().equals("session_id")) session_id = c.getValue();
+            for(Cookie c: cookies) if(c.getName().equals("session_id")) {
+                System.out.println("cookie found: "+c.getValue());
+                session_id = c.getValue();
+            }
         }
+        System.out.println ("checking auth: " +authVal+" ---- "+session_id);
         return DigestUtils.md5Hex(authVal).equals(session_id);
     }
     public static boolean logIn(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         boolean success = false;
-        String username = request.getParameter("username");
+        String username = request.getParameter("email");
         String password = request.getParameter("password");
         ArrayList<Object> list = new ArrayList<Object>();
         list.add(username);
-        if(username!=null && password !=null && !username.equals("") && !password.equals("")) {
             Connection cxn = null;
             try {
                 cxn = DBAdapter.dbConnect();
@@ -64,7 +66,9 @@ public class LoginSystem {
             } finally {
                 if(cxn!=null) try{cxn.close();} catch(SQLException e) {e.printStackTrace();}
             }
-        }
     return success;
+    }
+    public static boolean a(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        return true;
     }
 }
