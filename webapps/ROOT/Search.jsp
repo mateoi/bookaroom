@@ -343,7 +343,7 @@
 				out.println("<script> alert(\"Date format is broken. Proper format is dd/mm/yyyy \") </script>");
 		}
 
-		
+		ResultSet rs = Search.search(bitmask,fromDate,toDate,capicty);
 	%>
 </body>
 
