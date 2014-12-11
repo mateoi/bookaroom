@@ -21,7 +21,7 @@ public class Room {
 		this.name = name;
 		this.location = location;
 		this.capacity = capacity;
-		this.features = features;
+		this.features = features & 0b11111; // yes, the guy from Star Wars
 	}
 	
 	public String getLocation()	{
