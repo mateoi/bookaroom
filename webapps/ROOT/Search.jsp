@@ -111,6 +111,9 @@
 
 		<div id="page-wrapper">
 			<div class="row" style="padding: 2em 1em;">
+			    <h1 class="page-header">
+			        <small>Room Search</small>
+			    </h1>
 				<div class="col-lg-12">
 					<div class="panel panel-info">
 						<div class="panel-heading">Search</div>

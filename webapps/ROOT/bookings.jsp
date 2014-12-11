@@ -107,6 +107,9 @@
 
         <div id="page-wrapper">
         <div class="row" style="padding:2em 1em; ">
+            <h1 class="page-header">
+                <small>My Bookings</small>
+            </h1>
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="tab_today">
                     <% for(Booking b: bookings) {%>
