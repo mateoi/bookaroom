@@ -14,7 +14,7 @@ public class CommonUser extends User {
 		super(username, hashedPassword, false, database);
 	}
 	
-	public boolean requestBooking(User user, Room room, Date start, Date end) throws SQLException {
+	public boolean requestBooking(User user, int room_id, Date start, Date end) throws SQLException {
 		Connection conn;
 		try {
 			conn = DBAdapter.dbConnect();
@@ -33,8 +33,8 @@ public class CommonUser extends User {
 		
 		String newBooking = "INSERT INTO bookings (room_id, username, start, end) VALUES(?, ?, ?, ?);";
 		List<Object> args = new ArrayList<Object>();
-		args.add(getUsername());
-		args.add(room.getName());
+		args.add(room_id);
+		args.add(this.getUsername());
 		args.add(start);
 		args.add(end);
 		

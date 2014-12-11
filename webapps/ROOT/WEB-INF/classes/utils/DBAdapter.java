@@ -8,9 +8,12 @@ import java.sql.PreparedStatement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import core.Room;
 
 /***
  * 
@@ -50,9 +53,9 @@ public class DBAdapter {
 	}
 	
 	public static void main(String args[]){
-		
-		
+
+		List<Room> rs = Search.search(new java.sql.Date(124871), new java.sql.Date(89512895), 7, 0);
+		System.out.println(rs.get(0).getName());
 	}
-	
 
 }
