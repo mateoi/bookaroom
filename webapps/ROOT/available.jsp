@@ -137,7 +137,7 @@
                                 <label>Time</label>
                                 <br><label>From:</label>
                                 <select class="form-control"
-                                        placeholder="From" id="time_to" name="time_from">
+                                        placeholder="From" id="time_from" name="time_from">
                                     <option>00:00</option>
                                     <option>01:00</option>
                                     <option>02:00</option>
