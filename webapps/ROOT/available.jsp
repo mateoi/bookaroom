@@ -5,7 +5,15 @@
 <%@ page import="core.Room" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.DateFormat" %>
-<%@ page import="java.text.SimpleDateFormat" %><%
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="utils.LoginSystem" %>
+<%
+    if(!LoginSystem.isAuthenticated(request.getSession(), request)) {
+        response.sendRedirect("/index.jsp?notloggedin");
+        return;
+    }
+%>
+<%
 
     Integer capacity = null;
     List<Room> rs = null;

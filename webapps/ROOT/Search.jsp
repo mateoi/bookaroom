@@ -1,21 +1,7 @@
-<%@ page import="utils.Search"%>
-<%@ page import="core.Room"%>
-<%@ page import="utils.DBAdapter"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.Connection"%>
-<%@ page import="java.sql.SQLException"%>
-<%@ page import="org.apache.commons.codec.digest.DigestUtils"%>
 <%@ page import="utils.LoginSystem"%>
-<%@ page import="java.text.DateFormat"%>
-<%@ page import="java.text.SimpleDateFormat"%>
-<%@ page import="java.util.Locale"%>
-<%@ page import="java.util.Date"%>
-<%@ page import="java.util.List"%>
-<%@ page import="java.util.Calendar"%>
 <%
 	if(!LoginSystem.isAuthenticated(request.getSession(), request)) {
-		response.sendRedirect("/index.jsp");
+		response.sendRedirect("/index.jsp?notloggedin");
 		return;
 	}
 %>

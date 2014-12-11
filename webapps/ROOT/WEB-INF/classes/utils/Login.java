@@ -21,16 +21,13 @@ public class Login extends HttpServlet {
             boolean loginsuccess = LoginSystem.logIn(request, response, request.getSession());
             if(loginsuccess)
             {
-                System.out.println("login successful: " + loginsuccess);
                 response.sendRedirect("/index.jsp");
             }
-            else
-            {
-                System.out.println("redirect to failed");
-                response.sendRedirect("/loginFailed.jsp");
+            else {
+                response.sendRedirect("/index.jsp?failed");
             }
 
-        }
+        } else response.sendRedirect("/index.jsp?failed");
     }
 
     public void init() throws ServletException

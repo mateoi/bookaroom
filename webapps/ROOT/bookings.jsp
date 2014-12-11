@@ -3,7 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="utils.Bookings" %><%
     if(!LoginSystem.isAuthenticated(session, request)) {
-        response.sendRedirect("/index.jsp");
+        response.sendRedirect("/index.jsp?notloggedin");
         return;
     }
     if (request.getParameter("remove")!=null) {

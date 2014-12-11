@@ -3,8 +3,42 @@
     if(LoginSystem.isAuthenticated(session, request)) {
         isLoggedIn = true;
     }
-
-
+    if(request.getParameter("notloggedin")!=null) {
+        out.println("<script src=\"js/jquery.js\"></script><script src='js/toastr.js'></script>" +
+                "<script>window.setTimeout(function(){ toastr.options = {\n" +
+                "  \"closeButton\": false,\n" +
+                "  \"debug\": false,\n" +
+                "  \"progressBar\": false,\n" +
+                "  \"positionClass\": \"toast-top-center\",\n" +
+                "  \"onclick\": null,\n" +
+                "  \"showDuration\": \"300\",\n" +
+                "  \"hideDuration\": \"1000\",\n" +
+                "  \"timeOut\": \"5000\",\n" +
+                "  \"extendedTimeOut\": \"1000\",\n" +
+                "  \"showEasing\": \"swing\",\n" +
+                "  \"hideEasing\": \"linear\",\n" +
+                "  \"showMethod\": \"fadeIn\",\n" +
+                "  \"hideMethod\": \"fadeOut\"\n" +
+                "}; toastr.error('You must login to access this page.'); }, 1000);</script>");
+    }
+    if(request.getParameter("failed")!=null) {
+        out.println("<script src=\"js/jquery.js\"></script><script src='js/toastr.js'></script>" +
+                "<script>window.setTimeout(function(){ toastr.options = {\n" +
+                "  \"closeButton\": false,\n" +
+                "  \"debug\": false,\n" +
+                "  \"progressBar\": false,\n" +
+                "  \"positionClass\": \"toast-top-center\",\n" +
+                "  \"onclick\": null,\n" +
+                "  \"showDuration\": \"300\",\n" +
+                "  \"hideDuration\": \"1000\",\n" +
+                "  \"timeOut\": \"5000\",\n" +
+                "  \"extendedTimeOut\": \"1000\",\n" +
+                "  \"showEasing\": \"swing\",\n" +
+                "  \"hideEasing\": \"linear\",\n" +
+                "  \"showMethod\": \"fadeIn\",\n" +
+                "  \"hideMethod\": \"fadeOut\"\n" +
+                "}; toastr.error('Login failed, please try again.'); }, 1000);</script>");
+    }
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +71,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/toastr.css" rel="stylesheet"/>
+    <script src='js/toastr.js'></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -198,14 +234,9 @@
                                         <div class="form-group">
                                             <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                         </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                            </label>
-                                        </div>
                                         <!-- Change this to a button or input when using this as a form -->
                                         <!--<a href="index.html" class="btn btn-success btn-block">Login</a>-->
-                                        <button type="submit" class="btn btn-success btn-block"></button>
+                                        <button type="submit" class="btn btn-success btn-block">Login</button>
                                     </fieldset>
                                 </form>
                             </div>
