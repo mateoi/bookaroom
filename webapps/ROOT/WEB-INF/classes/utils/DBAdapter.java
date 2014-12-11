@@ -50,8 +50,8 @@ public class DBAdapter {
 	}
 	
 	public static void main(String args[]){
-		//List<Room> rs = Search.search(new java.sql.Date(124871), new java.sql.Date(89512895), 31, 0);
-		//System.out.println(rs.get(0).getName());
+		List<Room> rs = Search.search(new java.sql.Date(124871), new java.sql.Date(89512895), 7, 0);
+		System.out.println(rs.get(0).getName());
 	}
 
 }

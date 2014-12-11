@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import core.Room;
@@ -70,10 +71,17 @@ public class Search {
 			String location = rs.getString("location");
 			int size = rs.getInt("size");
 			int features = rs.getInt("equipment");
-            int r_id = rs.getInt("room_id");
-			Room r = new Room(r_id,name, location, size, features);
+			Room r = new Room(name, location, size, features);
 			rooms.add(r);
 		}
 		return rooms;
+	}
+	
+	public static List<Room> availableNow() {
+		long millis = Calendar.getInstance().getTime().getTime();
+		long hourFloor = (millis / 3600000) * 3600000; //3,600,000 ms in 1 hr
+		Date now = new Date(hourFloor);
+		Date then = new Date(hourFloor + 3600000);
+		return search(now, then, 0, 0);
 	}
 }
