@@ -5,6 +5,13 @@
 //        out.println("LOGEED IN AS: " + session.getAttribute("username"));
 //        out.println("<a href=\"logout.jsp\">Logout</a>");
           isLoggedIn = true;
+    } else {
+        boolean loginSuccessful = LoginSystem.logIn(request,response, session);
+        if(!loginSuccessful) out.println("<script>alert('failed');</script>");
+        else {
+            out.println("<script>alert('logged in');</script>");
+            isLoggedIn = true;
+        }
     }
 //    else out.println("<a href=\"login.jsp\">Please Login</a>");
 %>
