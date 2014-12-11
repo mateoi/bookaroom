@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import core.Room;
 
 public class Search {
 
-	public static List<Room> search(Date start, Date end, Integer capacity, int features) {
+	public static List<Room> search(Timestamp start, Timestamp end, Integer capacity, int features) {
 		Connection conn = null;
 		try {
 			conn = DBAdapter.dbConnect();
@@ -33,7 +34,7 @@ public class Search {
 						+ " SELECT b1.room_id"
 						+ " FROM bookings b1"
 						+ " WHERE b1.room_id = r.room_id"
-						+ " AND (b1.start > ? OR b1.end < ?));";
+						+ " AND ( (? < b1.start AND ? < b1.end AND ? >= b1.start ) OR (? >= b1.start AND ? < b1.end)));";
 		} else {
 			query =
 					  "SELECT r.*"
@@ -45,12 +46,15 @@ public class Search {
 						+ " SELECT b1.room_id"
 						+ " FROM bookings b1"
 						+ " WHERE b1.room_id = r.room_id"
-						+ " AND (b1.start > ? OR b1.end < ?));";
+						+ " AND ( (? < b1.start AND ? < b1.end AND ? >= b1.start ) OR (? >= b1.start AND ? < b1.end)));";
 			args.add(capacity);
 			args.add(capacity);
 		}
 		
+		args.add(start);
 		args.add(end);
+		args.add(end);
+		args.add(start);
 		args.add(start);
 		
 		try {
