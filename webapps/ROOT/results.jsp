@@ -71,6 +71,7 @@
   String projector = request.getParameter("proj");
   String roundTable = request.getParameter("rt");
   String laptop = request.getParameter("laptop");
+
   boolean doBitmask = false;
   int bitmask = 0;
   if(whiteboard != null){
@@ -122,6 +123,8 @@
       capacity = Integer.parseInt(request.getParameter("capacity_min"));
     fromDate = new java.sql.Date(xfromDate.getTime());
     toDate = new java.sql.Date(xtoDate.getTime());
+
+    System.out.println(xfromDate+" "+xtoDate+" "+capacity+" "+bitmask);
     rs = Search.search(fromDate,toDate,capacity,bitmask);
     
   }catch(Exception e){
@@ -263,7 +266,7 @@
                 <div class="form-group col-md-12">
 										<br><label>To:</label>
 										<select
-											class="form-control" placeholder="To" id="time_from"
+											class="form-control" placeholder="To" id="time_to"
 											name="time_to">
 											<option>00:00</option>
 											<option>01:00</option>
@@ -298,19 +301,19 @@
                 <div class="form-group col-md-12">
                   <label>Room Features</label>
                   <label class="checkbox-inline" style="margin-left: 10px;">
-                    <input type="checkbox"> WhiteBoard
+                    <input type="checkbox" name="wb"> WhiteBoard
                   </label>
                   <label class="checkbox-inline">
-                    <input type="checkbox"> SmartBoard
+                    <input type="checkbox" name="sb"> SmartBoard
                   </label>
                   <label class="checkbox-inline">
-                    <input type="checkbox"> Projector
+                    <input type="checkbox" name="proj"> Projector
                   </label>
                   <label class="checkbox-inline">
-                    <input type="checkbox"> Round Tables
+                    <input type="checkbox" name="rt"> Round Tables
                   </label>
                   <label class="checkbox-inline">
-                    <input type="checkbox"> Laptop A/V Input
+                    <input type="checkbox" name="laptop"> Laptop A/V Input
                   </label>
                 </div>
               </fieldset>
