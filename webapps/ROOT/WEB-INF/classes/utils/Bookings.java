@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Jack on 10/12/14.
  */
-public class FetchMyBookings {
+public class Bookings {
     public static List<Booking> getBookings(String username) {
         List<Booking> bookings = new ArrayList<Booking>();
         List<Object> arguments = new ArrayList<Object>();
@@ -30,8 +30,9 @@ public class FetchMyBookings {
                 String location = rs.getString("location");
                 int size = rs.getInt("size");
                 int features = rs.getInt("equipment");
+                int id = rs.getInt("booking_id");
                 Room r = new Room(name, location, size, features);
-                bookings.add(new Booking(r,start,end));
+                bookings.add(new Booking(id,r,start,end));
             }
 
 
