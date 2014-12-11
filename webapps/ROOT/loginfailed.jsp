@@ -50,10 +50,7 @@
 
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
-    <link href="css/plugins/timeline.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <link href="css/plugins/morris.css" rel="stylesheet">
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/toastr.css" rel="stylesheet"/>
     <script src='js/toastr.js'></script>
@@ -81,56 +78,20 @@
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
                         <li>
-                            <a href="tables.html"><i class="fa fa-user fa-fw"></i> Contact</a>
+                            <a href="help.jsp"><i class="fa fa-flag fa-fw"></i> Help</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-flag fa-fw"></i> Help</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-font fa-fw"></i> About</a>
+                            <a href="about.jsp"><i class="fa fa-font fa-fw"></i> About</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>
                 <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i>System message: Welcome to Nameless Organisation's book a room service!
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All System Messages</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-alerts -->
-                </li>
             </ul>
 
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html"><i class="fa fa-home fa-fw"></i></a>
+                <a class="navbar-brand" href="index.jsp"><i class="fa fa-home fa-fw"></i></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -141,7 +102,7 @@
                     <% } %>
                 </li>
                 <% if(!isLoggedIn){ %>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                <button class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#loginModal">
                     Login
                 </button>
                 <% } %>
@@ -152,11 +113,6 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
                         <li><a href="/logoutServ"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
@@ -177,7 +133,7 @@
             </div>
             <!-- /.row -->
             <div class="row" style="padding: 0 0em;">
-                <div class=" col-md-4" style="padding: 0 8em;">
+                <div class=" col-md-4" style="padding: 0 4em;">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
@@ -189,7 +145,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="search.html">
+                        <a href="Search.jsp">
                             <div class="panel-footer">
                                 <span class="pull-left">Search</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -198,7 +154,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-4" style="padding: 0 8em;">
+                <div class="col-md-4" style="padding: 0 4em;">
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
@@ -210,7 +166,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="bookings.html">
+                        <a href="bookings.jsp">
                             <div class="panel-footer">
                                 <span class="pull-left">My Bookings</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -219,7 +175,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-4"style="padding: 0 8em;">
+                <div class="col-md-4"style="padding: 0 4em;">
                     <div class="panel panel-yellow">
                         <div class="panel-heading">
                             <div class="row">
@@ -231,7 +187,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="available.html">
+                        <a href="available.jsp">
                             <div class="panel-footer">
                                 <span class="pull-left">Available Now</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -260,19 +216,12 @@
                                         <div class="form-group">
                                             <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                         </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                            </label>
-                                        </div>
                                         <!-- Change this to a button or input when using this as a form -->
                                         <!--<a href="index.html" class="btn btn-success btn-block">Login</a>-->
-                                        <input type="submit"/>
+                                        <!-- <input type="submit"/> -->
+                                        <button type="submit" class="btn btn-success btn-block"></button>
                                     </fieldset>
                                 </form>
-                            </div>
-                            <div class="modal-footer">
-                                <p>Don't have an account? <a href="#">Sign Up</a></p>
                             </div>
                         </div>
                         <!-- /.modal-content -->
@@ -285,7 +234,7 @@
               <div class="container">
                 <p style="margin: 0 0 2px;">Copyright © 2013 UCL (University College London). All rights reserved.</p>
                 
-                <p style="margin: 0 0 2px;">Maintained by Group 5(?), Software engineering team. Built with Bootstrap, Jquery, and java back-end</p>
+                <p style="margin: 0 0 2px;">Maintained by Group 9, Software engineering team. Built with Bootstrap, Jquery, and java EE back-end</p>
                 
                 <p style="margin: 0 0 2px;">University College London - Gower Street - London - WC1E 6BT</p>
               </div>
@@ -300,14 +249,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/main.js"></script>

@@ -37,7 +37,7 @@
 <meta property="og:image:height" content="200">
 <!-- <meta property="og:url" content="http://bookaroom.com" > -->
 <meta property="og:description"
-	content="Welcome to the Nameless organisation book a room online service. From here you may enter your critieria to select a soecific room or simply browse all our rooms.">
+	content="Welcome to the Nameless organisation book a room online service. From here you may enter your critieria to select a specific room or simply browse all our rooms.">
 
 <!-- meta data required for Twitter -->
 <meta name="twitter:site" content="@bookarooom">
@@ -45,17 +45,14 @@
 <meta name="twitter:card"
 	content="Welcome to the Nameless organisation room booking service!">
 <meta name="twitter:description"
-	content="Welcome to the Nameless organisation book a room online service. From here you may enter your critieria to select a soecific room or simply browse all our rooms.">
+	content="Welcome to the Nameless organisation book a room online service. From here you may enter your critieria to select a specific room or simply browse all our rooms.">
 <!-- <meta name="twitter:url" content="http://www.bookaroom.com" > -->
 
 <title>Room Booking</title>
 
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
-<link href="css/plugins/timeline.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
-<link href="css/plugins/morris.css" rel="stylesheet">
 <link href="font-awesome-4.1.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
@@ -82,44 +79,17 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-alerts">
-						<li><a href="tables.html"><i class="fa fa-user fa-fw"></i>
-								Contact</a></li>
-						<li class="divider"></li>
-						<li><a href="tables.html"><i class="fa fa-flag fa-fw"></i>
+						<li><a href="help.jsp"><i class="fa fa-flag fa-fw"></i>
 								Help</a></li>
 						<li class="divider"></li>
-						<li><a href="tables.html"><i class="fa fa-font fa-fw"></i>
+						<li><a href="about.jsp"><i class="fa fa-font fa-fw"></i>
 								About</a></li>
 					</ul> <!-- /.dropdown-alerts --></li>
 				<!-- /.dropdown -->
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <i class="fa fa-bell fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu dropdown-alerts">
-						<li><a href="#">
-								<div>
-									<i class="fa fa-envelope fa-fw"></i>System message: Welcome to
-									Nameless Organisation's book a room service! <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a class="text-center" href="#"> <strong>See
-									All System Messages</strong> <i class="fa fa-angle-right"></i>
-						</a></li>
-					</ul> <!-- /.dropdown-alerts --></li>
 			</ul>
 
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html"><i
+				<a class="navbar-brand" href="index.jsp"><i
 					class="fa fa-home fa-fw"></i></a>
 			</div>
 			<!-- /.navbar-header -->
@@ -131,12 +101,7 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
-								Profile</a></li>
-						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-						</li>
-						<li class="divider"></li>
-						<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>
+						<li><a href="/logoutServ"><i class="fa fa-sign-out fa-fw"></i>
 								Logout</a></li>
 					</ul> <!-- /.dropdown-user --></li>
 				<!-- /.dropdown -->
@@ -259,8 +224,8 @@
 					<p style="margin: 0 0 2px;">Copyright © 2013 UCL (University
 						College London). All rights reserved.</p>
 
-					<p style="margin: 0 0 2px;">Maintained by Group 5(?), Software
-						engineering team. Built with Bootstrap, Jquery, with a java
+					<p style="margin: 0 0 2px;">Maintained by Group 9, Software
+						engineering team. Built with Bootstrap, Jquery, with a java EE
 						back-end</p>
 
 					<p style="margin: 0 0 2px;">University College London - Gower
@@ -277,14 +242,6 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
-
-	<!-- Metis Menu Plugin JavaScript -->
-	<script src="js/plugins/metisMenu/metisMenu.min.js"></script>
-
-	<!-- Morris Charts JavaScript -->
-	<script src="js/plugins/morris/raphael.min.js"></script>
-	<script src="js/plugins/morris/morris.min.js"></script>
-	<script src="js/plugins/morris/morris-data.js"></script>
 
 	<!-- Custom Theme JavaScript -->
 	<script src="js/main.js"></script>

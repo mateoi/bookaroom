@@ -1,21 +1,3 @@
-<%@ page import="utils.LoginSystem" %>
-<%@ page import="core.Booking" %>
-<%@ page import="java.util.List" %>
-<%@ page import="utils.Bookings" %><%
-    if(!LoginSystem.isAuthenticated(session, request)) {
-        response.sendRedirect("/index.jsp");
-        return;
-    }
-    if (request.getParameter("remove")!=null) {
-        System.out.println("removing " + request.getParameter("remove"));
-        Bookings.removeBooking(request.getParameter("remove"));
-    }
-
-    if (request.getParameter("book")!=null) {
-        Bookings.addBooking(request.getParameter("room_id"),(String) session.getAttribute("username"),request.getParameter("start"),request.getParameter("end"));
-    }
-    List<Booking> bookings = Bookings.getBookings((String) session.getAttribute("username"));
-%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,7 +62,6 @@
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>
-                <!-- /.dropdown -->
             </ul>
 
             <div class="navbar-header">
@@ -88,7 +69,7 @@
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
+            <ul class="nav navbar-top-links navbar-right"> 
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -106,54 +87,71 @@
         </nav>
 
         <div id="page-wrapper">
-        <div class="row" style="padding:2em 1em; ">
-            <div class="tab-content">
-                <div class="tab-pane fade in active" id="tab_today">
-                    <% for(Booking b: bookings) {%>
-                    <div class="row" style="padding:2em 1em; ">
-                        <div class="col-lg-12">
-                            <div class="panel panel-success" >
-                                <div class="panel-body" style="padding:0px">
-                                    <img src='images/Nelson_Mandela_Theatre.jpg' height="200" width="300" style="float:left">
-                                    <div class="col-md-4 text-left" style="padding-left: 50px;">
-                                        <h1 style="margin-top: 5px;"><small><%= b.getRoom().getName()%></small></h1>
-                                        <address>
-                                            <%=b.getRoom().getLocation()%>
-                                        </address>
-                                        <h3 style="margin-top: 1em;"><small>Start: <%=b.getStart()%> </small>
-                                            <br><small>End: <%=b.getEnd()%></small></h3>
-                                    </div>
-                                    <div class="col-md-4 text-left">
-                                        <ul>
-                                            <li><p class="text-muted">Capacity: <%= b.getRoom().getCapacity()%></p></li>
-                                            <% for(String f: b.getRoom().getFeatures()) { %>
-                                            <li><p class="text-muted"><%= f %></p></li>
-                                            <% } %>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="panel-footer pull-right">
-                                    <!-- Kareem: remember to change this to a button or input when using this as a form -->
-                                    <form>
-                                         <input type="hidden" name="remove" value ="<%=b.getId()%>">
-                                         <input type="submit" value="Remove" class="btn btn-primary"></button>
-                                    </form>
-                                    <%--<a href="bookings.jsp" class="btn btn-success">Remove</a>--%>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.col-lg-4 -->
-                    </div>
-                    <%}%>
-                </div>
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 text-center">
+                <h1 class="page-header">
+                    Help <small>- FAQs</small>
+                </h1>
+                </br>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-paperclip"></i> How do I search for rooms?
+                    </li>
+                </ol>
+                <p>
+                    To make a search you first have to login, and afterwards head over to the search tab in your home menu to start searching for a room.
+                </p>
+                </br>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-paperclip"></i> How do I make a booking?
+                    </li>
+                </ol>
+                <p>
+                    To make a booking you will first have to login. Once you have made a search you will simply have to click the 'book' button to make a booking. You can head to your 'My bookings' page afterwards to review your bookings. 
+                </p>
+                </br>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-paperclip"></i> I need a room right now!
+                    </li>
+                </ol>
+                <p>
+                    Simply head over to the available now page to get a list of the rooms available for use right now!
+                </p>
+                </br>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-paperclip"></i> I can't make a booking? 
+                    </li>
+                </ol>
+                <p>
+                    Try to make sure you are logged into your account, you will need to do so before you can make any bookings.
+                </p>
+                </br>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-paperclip"></i> How do I set up an account? 
+                    </li>
+                </ol>
+                <p>
+                    As a new employee of Nameless inc., A new room booking account will be made for you when you join the company by the webmaster automatically. You will not need to worry about this. If you have any queries please contact the webmaster. 
+                </p>
+                </br>
+                </br>
             </div>
         </div>
 
-            <footer class="bs-docs-footer" role="contentinfo" style="margin-top:200px">
+            
+
+            <footer class="bs-docs-footer" role="contentinfo" style="margin-top:-20px">
               <div class="container">
                 <p style="margin: 0 0 2px;">Copyright © 2013 UCL (University College London). All rights reserved.</p>
                 
-                <p style="margin: 0 0 2px;">Maintained by Group 9, Software engineering team. Built with Bootstrap, Jquery, with a java EE back-end</p>
+                <p style="margin: 0 0 2px;">Maintained by Group 9, Software engineering team. Built with Bootstrap, Jquery, with a java back-end</p>
                 
                 <p style="margin: 0 0 2px;">University College London - Gower Street - London - WC1E 6BT</p>
               </div>

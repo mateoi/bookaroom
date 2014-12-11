@@ -42,23 +42,20 @@
     <meta property="og:image:width" content="200" >
     <meta property="og:image:height" content="200" >
     <!-- <meta property="og:url" content="http://bookaroom.com" > -->
-    <meta property="og:description" content="Welcome to the Nameless organisation book a room online service. From here you may enter your critieria to select a soecific room or simply browse all our rooms.">
+    <meta property="og:description" content="Welcome to the Nameless organisation book a room online service. From here you may enter your critieria to select a specific room or simply browse all our rooms.">
 
     <!-- meta data required for Twitter -->
     <meta name="twitter:site" content="@bookarooom" >
     <meta name="twitter:title" content="Book A Room service" >
     <meta name="twitter:card" content="Welcome to the Nameless organisation room booking service!" >
-    <meta name="twitter:description" content="Welcome to the Nameless organisation book a room online service. From here you may enter your critieria to select a soecific room or simply browse all our rooms." >
+    <meta name="twitter:description" content="Welcome to the Nameless organisation book a room online service. From here you may enter your critieria to select a specific room or simply browse all our rooms." >
     <!-- <meta name="twitter:url" content="http://www.bookaroom.com" > -->
 
     <title>Room Booking</title>
 
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
-    <link href="css/plugins/timeline.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <link href="css/plugins/morris.css" rel="stylesheet">
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -84,52 +81,16 @@
             </a>
             <ul class="dropdown-menu dropdown-alerts">
                 <li>
-                    <a href="tables.html"><i class="fa fa-user fa-fw"></i> Contact</a>
+                    <a href="help.jsp"><i class="fa fa-flag fa-fw"></i> Help</a>
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="tables.html"><i class="fa fa-flag fa-fw"></i> Help</a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="tables.html"><i class="fa fa-font fa-fw"></i> About</a>
+                    <a href="about.jsp"><i class="fa fa-font fa-fw"></i> About</a>
                 </li>
             </ul>
             <!-- /.dropdown-alerts -->
         </li>
         <!-- /.dropdown -->
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-alerts">
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-envelope fa-fw"></i>System message: Welcome to Nameless Organisation's book a room service!
-                            <span class="pull-right text-muted small">4 minutes ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                            <span class="pull-right text-muted small">4 minutes ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a class="text-center" href="#">
-                        <strong>See All System Messages</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.dropdown-alerts -->
-        </li>
     </ul>
 
     <div class="navbar-header">
@@ -144,12 +105,7 @@
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                </li>
-                <li class="divider"></li>
-                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="/logoutServ"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -268,6 +224,9 @@
 </nav>
 
 <div id="page-wrapper" style="padding-right: 19em">
+    <h1 class="page-header">
+        <small>Available now - Results</small>
+    </h1>
     <% for (Room r : rs){%>
     <div class="row" style="padding:2em 1em; ">
         <div class="col-lg-12">
@@ -311,23 +270,11 @@
 
     <% } %>
 
-    <nav class="pull-right">
-        <ul class="pagination">
-            <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
-        </ul>
-    </nav>
-
     <footer class="bs-docs-footer" role="contentinfo" style="margin-top:80px">
         <div class="container">
             <p style="margin: 0 0 2px;">Copyright © 2013 UCL (University College London). All rights reserved.</p>
 
-            <p style="margin: 0 0 2px;">Maintained by Group 5(?), Software engineering team. Built with Bootstrap, Jquery, with a java back-end</p>
+            <p style="margin: 0 0 2px;">Maintained by Group 9, Software engineering team. Built with Bootstrap, Jquery, with a java back-end EE</p>
 
             <p style="margin: 0 0 2px;">University College London - Gower Street - London - WC1E 6BT</p>
         </div>
