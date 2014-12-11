@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import core.Room;
 
 /***
  * 
@@ -44,6 +47,11 @@ public class DBAdapter {
             return null;
         }
         return statement.executeQuery();
+	}
+	
+	public static void main(String args[]){
+		List<Room> rs = Search.search(new java.sql.Date(124871), new java.sql.Date(89512895), 7, 0);
+		System.out.println(rs.get(0).getName());
 	}
 
 }

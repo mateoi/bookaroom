@@ -11,7 +11,7 @@ import core.Room;
 
 public class Search {
 
-	public static List<Room> search(Date start, Date end, int capacity, int features) {
+	public static List<Room> search(Date start, Date end, Integer capacity, int features) {
 		Connection conn = null;
 		try {
 			conn = DBAdapter.dbConnect();
@@ -24,28 +24,28 @@ public class Search {
 		args.add(features);
 		args.add(features);
 		
-		if (capacity == 0) {
+		if (capacity == null || capacity == 0) {
 			query =
 					  "SELECT r.*"
-					+ "FROM rooms r, bookings b"
-					+ "HAVING equipment&?=?"
-					+ "AND r.room_id NOT IN("
-						+ "SELECT b.room_id"
-						+ "FROM bookings b"
-						+ "WHERE b.room_id = r.room_id"
-						+ "AND (b.start > ? OR b.end < ?));";
+					+ " FROM rooms r"
+					+ " HAVING equipment&?=?"
+					+ " AND r.room_id NOT IN("
+						+ " SELECT b1.room_id"
+						+ " FROM bookings b1"
+						+ " WHERE b1.room_id = r.room_id"
+						+ " AND (b1.start > ? OR b1.end < ?));";
 		} else {
 			query =
 					  "SELECT r.*"
-					+ "FROM rooms r, bookings b"
-					+ "HAVING equipment&?=?"
-					+ "AND size >= ?"
-					+ "AND size < (? * 1.5 + 10)"
-					+ "AND r.room_id NOT IN("
-						+ "SELECT b.room_id"
-						+ "FROM bookings b"
-						+ "WHERE b.room_id = r.room_id"
-						+ "AND (b.start > ? OR b.end < ?));";
+					+ " FROM rooms r"
+					+ " HAVING equipment&?=?"
+					+ " AND size >= ?"
+					+ " AND size < (? * 1.5 + 10)"
+					+ " AND r.room_id NOT IN("
+						+ " SELECT b1.room_id"
+						+ " FROM bookings b1"
+						+ " WHERE b1.room_id = r.room_id"
+						+ " AND (b1.start > ? OR b1.end < ?));";
 			args.add(capacity);
 			args.add(capacity);
 		}
@@ -56,11 +56,14 @@ public class Search {
 		try {
 			return roomify(DBAdapter.dbExecute(query, args, false, conn));
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
+		}finally{
+			if(conn!=null) try{conn.close();} catch(SQLException e) {e.printStackTrace();}
 		}
 	}
 	
-	private static List<Room> roomify(ResultSet rs) throws SQLException {
+	public static List<Room> roomify(ResultSet rs) throws SQLException {
 		List<Room> rooms = new ArrayList<Room>();
 		while (rs.next()) {
 			String name = rs.getString("name");
@@ -72,5 +75,4 @@ public class Search {
 		}
 		return rooms;
 	}
-
 }
