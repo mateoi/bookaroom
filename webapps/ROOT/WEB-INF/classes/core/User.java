@@ -24,7 +24,7 @@ public abstract class User {
 		return isAdmin;
 	}
 	
-	public abstract boolean requestBooking(User user, Room room, Date start, Date end) throws SQLException;
+	public abstract boolean requestBooking(User user, int room_id, Date start, Date end) throws SQLException;
 
 	public String getUsername() {
 		return username;
