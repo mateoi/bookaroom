@@ -9,7 +9,7 @@
 <%@ page import="utils.LoginSystem" %>
 <%
     if(!LoginSystem.isAuthenticated(request.getSession(), request)) {
-        response.sendRedirect("/index.jsp?notloggedin");
+        response.sendRedirect("/?notloggedin");
         return;
     }
 %>
@@ -102,7 +102,7 @@
     </ul>
 
     <div class="navbar-header">
-        <a class="navbar-brand" href="index.jsp"><i class="fa fa-home fa-fw"></i></a>
+        <a class="navbar-brand" href="/"><i class="fa fa-home fa-fw"></i></a>
     </div>
     <!-- /.navbar-header -->
 

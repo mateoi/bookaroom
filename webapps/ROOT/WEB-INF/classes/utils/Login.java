@@ -17,17 +17,16 @@ public class Login extends HttpServlet {
         String username = request.getParameter("email");
         String password = request.getParameter("password");
         if(username!=null && password !=null && !username.equals("") && !password.equals("")) {
-            System.out.println("attempting login");
             boolean loginsuccess = LoginSystem.logIn(request, response, request.getSession());
             if(loginsuccess)
             {
-                response.sendRedirect("/index.jsp");
+                response.sendRedirect("/");
             }
             else {
-                response.sendRedirect("/index.jsp?failed");
+                response.sendRedirect("/?failed");
             }
 
-        } else response.sendRedirect("/index.jsp?failed");
+        } else response.sendRedirect("/?failed");
     }
 
     public void init() throws ServletException

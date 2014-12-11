@@ -24,7 +24,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     if(!LoginSystem.isAuthenticated(request.getSession(), request)) {
-        response.sendRedirect("/index.jsp?notloggedin");
+        response.sendRedirect("/?notloggedin");
         return;
     }
 %>
@@ -135,7 +135,7 @@
   }catch(Exception e){
     if(!(e instanceof NullPointerException))
       out.println("<script> alert(\"Date format is broken. Proper format is dd/mm/yyyy \") </script>");
-    response.sendRedirect("Search.jsp");
+    response.sendRedirect("search.jsp");
     out.println(e);
   }
   
@@ -165,7 +165,7 @@
     </ul>
 
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.jsp"><i class="fa fa-home fa-fw"></i></a>
+      <a class="navbar-brand" href="/"><i class="fa fa-home fa-fw"></i></a>
     </div>
     <!-- /.navbar-header -->
 
@@ -200,7 +200,7 @@
 										<label>Time</label> 
 										<br><label>From:</label>
 										<select class="form-control"
-											placeholder="From" id="time_to" name="time_from">
+											placeholder="From" id="time_from" name="time_from">
 											<option>00:00</option>
 											<option>01:00</option>
 											<option>02:00</option>
@@ -298,7 +298,7 @@
     <h1 class="page-header">
         <small>Search - Results</small>
     </h1>
-	<% for (Room r : rs){%>
+	<%  if(rs!=null) for (Room r : rs){%>
 		<div class="row" style="padding:2em 1em; ">
       <div class="col-lg-12">
         <div class="panel panel-info" >

@@ -3,7 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="utils.Bookings" %><%
     if(!LoginSystem.isAuthenticated(session, request)) {
-        response.sendRedirect("/index.jsp?notloggedin");
+        response.sendRedirect("/?notloggedin");
         return;
     }
     if (request.getParameter("remove")!=null) {
@@ -84,7 +84,7 @@
             </ul>
 
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.jsp"><i class="fa fa-home fa-fw"></i></a>
+                <a class="navbar-brand" href="/"><i class="fa fa-home fa-fw"></i></a>
             </div>
             <!-- /.navbar-header -->
 
