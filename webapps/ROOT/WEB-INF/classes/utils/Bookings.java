@@ -44,4 +44,18 @@ public class Bookings {
         }
         return bookings;
     }
+    public static void removeBooking(String id) {
+
+        List<Object> arguments = new ArrayList<Object>();
+        arguments.add(id);
+        Connection conn = null;
+        try {
+            conn = DBAdapter.dbConnect();
+            DBAdapter.dbExecute("DELETE FROM bookings WHERE booking_id=?", arguments, true, conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            if(conn!=null) try{conn.close();} catch(SQLException e) {e.printStackTrace();}
+        }
+    }
 }

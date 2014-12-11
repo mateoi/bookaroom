@@ -119,7 +119,7 @@
             </ul>
 
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html"><i class="fa fa-home fa-fw"></i></a>
+                <a class="navbar-brand" href="index.jsp"><i class="fa fa-home fa-fw"></i></a>
             </div>
             <!-- /.navbar-header -->
 
