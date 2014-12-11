@@ -70,7 +70,8 @@ public class Search {
 			String location = rs.getString("location");
 			int size = rs.getInt("size");
 			int features = rs.getInt("equipment");
-			Room r = new Room(name, location, size, features);
+            int r_id = rs.getInt("room_id");
+			Room r = new Room(r_id,name, location, size, features);
 			rooms.add(r);
 		}
 		return rooms;

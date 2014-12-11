@@ -7,18 +7,20 @@ import java.util.List;
 import utils.DBAdapter;
 
 public class Room {
-	
+
+    private int id;
 	private String name;
 	private String location;
 	private int capacity;
 	private int features;
 	
-	public Room(String name,
+	public Room(int id, String name,
 				String location,
 				int capacity, 
 				int features) 
 	{
-		this.name = name;
+		this.id = id;
+        this.name = name;
 		this.location = location;
 		this.capacity = capacity;
 		this.features = features;
@@ -39,6 +41,10 @@ public class Room {
 	public String getName() {
 		return name;
 	}
+
+    public int getId() {
+        return id;
+    }
 	
 	public List<String> getFeatures() {
 		int f = this.features;

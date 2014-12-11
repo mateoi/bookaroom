@@ -102,6 +102,7 @@
   Integer capacity = null;
   List<Room> rs = null;
 
+  DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
   DateFormat format2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
   try{
 
@@ -362,8 +363,13 @@
           </div>
           <div class="panel-footer pull-right">
             <!-- Kareem: remember to change this to a button or input when using this as a form -->
-            <!-- <button type="button" class="btn btn-primary">Search</button> -->
-            <a href="results_closeup.html" class="btn btn-primary">Book</a>
+              <form action="bookings.jsp">
+                  <input type="hidden" name="room_id" value="<%=r.getId()%>">
+                  <input type="hidden" name="start" value="<%= format1.format(fromDate)%>">
+                  <input type="hidden" name="end" value="<%= format1.format(toDate)%>">
+                  <input type="submit" name="book" value="Book" class="btn btn-primary">
+              </form>
+            <%--<a href="results_closeup.html" class="btn btn-primary">Book</a>--%>
           </div>
         </div>
       </div>

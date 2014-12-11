@@ -10,6 +10,10 @@
         System.out.println("removing " + request.getParameter("remove"));
         Bookings.removeBooking(request.getParameter("remove"));
     }
+
+    if (request.getParameter("book")!=null) {
+        Bookings.addBooking(request.getParameter("room_id"),(String) session.getAttribute("username"),request.getParameter("start"),request.getParameter("end"));
+    }
     List<Booking> bookings = Bookings.getBookings((String) session.getAttribute("username"));
 %>
 <!DOCTYPE html>
@@ -184,7 +188,7 @@
                                 <div class="panel-footer pull-right">
                                     <!-- Kareem: remember to change this to a button or input when using this as a form -->
                                     <form>
-                                         <input type="hidden" name="remove" value ="<%=b.getId() %>">
+                                         <input type="hidden" name="remove" value ="<%=b.getId()%>">
                                          <input type="submit" value="Remove" class="btn btn-primary"></button>
                                     </form>
                                     <%--<a href="bookings.jsp" class="btn btn-success">Remove</a>--%>

@@ -30,9 +30,10 @@ public class Bookings {
                 String location = rs.getString("location");
                 int size = rs.getInt("size");
                 int features = rs.getInt("equipment");
-                int id = rs.getInt("booking_id");
-                Room r = new Room(name, location, size, features);
-                bookings.add(new Booking(id,r,start,end));
+                int b_id = rs.getInt("booking_id");
+                int r_id = rs.getInt("room_id");
+                Room r = new Room(r_id,name, location, size, features);
+                bookings.add(new Booking(b_id,r,start,end));
             }
 
 
@@ -45,13 +46,30 @@ public class Bookings {
         return bookings;
     }
     public static void removeBooking(String id) {
-
         List<Object> arguments = new ArrayList<Object>();
         arguments.add(id);
         Connection conn = null;
         try {
             conn = DBAdapter.dbConnect();
             DBAdapter.dbExecute("DELETE FROM bookings WHERE booking_id=?", arguments, true, conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            if(conn!=null) try{conn.close();} catch(SQLException e) {e.printStackTrace();}
+        }
+    }
+
+    public static void addBooking(String id, String username, String start, String end) {
+        List<Object> arguments = new ArrayList<Object>();
+        arguments.add(id);
+        arguments.add(username);
+        arguments.add(start);
+        arguments.add(end);
+
+        Connection conn = null;
+        try {
+            conn = DBAdapter.dbConnect();
+            DBAdapter.dbExecute("INSERT INTO bookings (room_id,username,start,end) VALUES (?,?,?,?)", arguments, true, conn);
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
