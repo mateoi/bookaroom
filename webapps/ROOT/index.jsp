@@ -1,8 +1,7 @@
 <%@ page import="utils.LoginSystem" %>
 <%  boolean isLoggedIn = false;
-    session.setAttribute("username","Andrew");
     if(LoginSystem.isAuthenticated(session, request)) {
-//        out.println("LOGEED IN AS: " + session.getAttribute("username"));
+        System.out.println("LOGEED IN AS: " + session.getAttribute("username"));
 //        out.println("<a href=\"logout.jsp\">Logout</a>");
           isLoggedIn = true;
     } else {
@@ -13,7 +12,8 @@
             isLoggedIn = true;
         }
     }
-//    else out.println("<a href=\"login.jsp\">Please Login</a>");
+
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,7 +149,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="/logoutServ"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!--/.dropdown-user -->
@@ -181,7 +181,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="search.html">
+                        <a href="Search.jsp">
                             <div class="panel-footer">
                                 <span class="pull-left">Search</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -202,7 +202,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="bookings.html">
+                        <a href="bookings.jsp">
                             <div class="panel-footer">
                                 <span class="pull-left">My Bookings</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -244,10 +244,10 @@
                                 </div>
                             </div>
                             <div class="modal-body">
-                                <form role="form">
+                                <form role="form" action="/loginServ" method="get">
                                     <fieldset>
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="E-mail" name="username" type="email" autofocus>
+                                            <input class="form-control" placeholder="E-mail" name="email" type="text" autofocus>
                                         </div>
                                         <div class="form-group">
                                             <input class="form-control" placeholder="Password" name="password" type="password" value="">
@@ -258,7 +258,8 @@
                                             </label>
                                         </div>
                                         <!-- Change this to a button or input when using this as a form -->
-                                        <button type="submit" class="btn btn-success btn-block">Login</button>
+                                        <!--<a href="index.html" class="btn btn-success btn-block">Login</a>-->
+                                        <input type="submit"/>
                                     </fieldset>
                                 </form>
                             </div>

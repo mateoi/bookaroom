@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import utils.DBAdapter;
@@ -25,7 +24,7 @@ public abstract class User {
 		return isAdmin;
 	}
 	
-	public abstract boolean requestBooking(User user, Room room, Date start, Date end) throws SQLException;
+	public abstract boolean requestBooking(User user, int room_id, Date start, Date end) throws SQLException;
 
 	public String getUsername() {
 		return username;
@@ -39,12 +38,12 @@ public abstract class User {
 		this.hashedPassword = hashedPassword;
 	}
 	
-	protected boolean hasBooking(Date date) throws ClassNotFoundException, SQLException {
+	protected boolean hasBooking(Date start) throws ClassNotFoundException, SQLException {
 		Connection conn = DBAdapter.dbConnect();
-		String query = "SELECT * FROM bookings WHERE username = ? AND start = ?;";
+		String query = "SELECT * FROM bookings WHERE username = ? AND end < ?;";
 		List<Object> args = new ArrayList<Object>();
 		args.add(this.username);
-		args.add(date);
+		args.add(start);
 		
 		ResultSet result = DBAdapter.dbExecute(query, args, false, conn);
 		
