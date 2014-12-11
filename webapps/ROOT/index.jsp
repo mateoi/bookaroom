@@ -2,7 +2,6 @@
 <%  boolean isLoggedIn = false;
     if(LoginSystem.isAuthenticated(session, request)) {
         System.out.println("LOGEED IN AS: " + session.getAttribute("username"));
-//        out.println("<a href=\"logout.jsp\">Logout</a>");
         isLoggedIn = true;
     }
 
