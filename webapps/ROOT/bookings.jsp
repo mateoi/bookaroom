@@ -1,12 +1,16 @@
 <%@ page import="utils.LoginSystem" %>
 <%@ page import="core.Booking" %>
 <%@ page import="java.util.List" %>
-<%@ page import="utils.FetchMyBookings" %><%
-    if(!LoginSystem.isAuthenticated(request.getSession(), request)) {
+<%@ page import="utils.Bookings" %><%
+    if(!LoginSystem.isAuthenticated(session, request)) {
         response.sendRedirect("/index.jsp");
         return;
     }
-    List<Booking> bookings = FetchMyBookings.getBookings((String) session.getAttribute("username"));
+    if (request.getParameter("remove")!=null) {
+        System.out.println("removing " + request.getParameter("remove"));
+        Bookings.removeBooking(request.getParameter("remove"));
+    }
+    List<Booking> bookings = Bookings.getBookings((String) session.getAttribute("username"));
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,7 +123,7 @@
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right"> 
+            <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -179,8 +183,11 @@
                                 </div>
                                 <div class="panel-footer pull-right">
                                     <!-- Kareem: remember to change this to a button or input when using this as a form -->
-                                    <!-- <button type="button" class="btn btn-primary">Search</button> -->
-                                    <a href="bookings_closeup.html" class="btn btn-success">More Info</a>
+                                    <form>
+                                         <input type="hidden" name="remove" value ="<%=b.getId() %>">
+                                         <input type="submit" value="Remove" class="btn btn-primary"></button>
+                                    </form>
+                                    <%--<a href="bookings.jsp" class="btn btn-success">Remove</a>--%>
                                 </div>
                             </div>
                         </div>
