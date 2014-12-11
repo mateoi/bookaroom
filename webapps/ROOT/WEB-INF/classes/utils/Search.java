@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,12 +52,12 @@ public class Search {
 			args.add(capacity);
 			args.add(capacity);
 		}
-		
-		args.add(start);
-		args.add(end);
-		args.add(end);
-		args.add(start);
-		args.add(start);
+        DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		args.add(format1.format(start));
+		args.add(format1.format(end));
+		args.add(format1.format(end));
+		args.add(format1.format(start));
+		args.add(format1.format(start));
 		
 		try {
 			return roomify(DBAdapter.dbExecute(query, args, false, conn));
