@@ -214,7 +214,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="available.html">
+                        <a href="available.jsp">
                             <div class="panel-footer">
                                 <span class="pull-left">Available Now</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
