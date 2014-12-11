@@ -2,7 +2,7 @@
 <%@ page import="core.Booking" %>
 <%@ page import="java.util.List" %>
 <%@ page import="utils.FetchMyBookings" %><%
-    if(!LoginSystem.isAuthenticated(session, request)) {
+    if(!LoginSystem.isAuthenticated(request.getSession(), request)) {
         response.sendRedirect("/index.jsp");
         return;
     }

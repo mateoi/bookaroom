@@ -101,12 +101,15 @@
   java.sql.Date toDate = null;
   Integer capacity = null;
   List<Room> rs = null;
+
+  DateFormat format2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
   try{
 
     Date xfromDate = null;
     Date xtoDate = null;
     String inputDate  = request.getParameter("date");
     DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
     format.setLenient(false);
     Date date = format.parse(inputDate);
     Calendar cal = Calendar.getInstance();
@@ -121,10 +124,10 @@
     xtoDate = cal.getTime();
     if(request.getParameter("capacity_min") != "")
       capacity = Integer.parseInt(request.getParameter("capacity_min"));
+    System.out.println(xfromDate.getTime());
     fromDate = new java.sql.Date(xfromDate.getTime());
     toDate = new java.sql.Date(xtoDate.getTime());
 
-    System.out.println(xfromDate+" "+xtoDate+" "+capacity+" "+bitmask);
     rs = Search.search(fromDate,toDate,capacity,bitmask);
     
   }catch(Exception e){
@@ -196,7 +199,7 @@
     </ul>
 
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.html"><i class="fa fa-home fa-fw"></i></a>
+      <a class="navbar-brand" href="index.jsp"><i class="fa fa-home fa-fw"></i></a>
     </div>
     <!-- /.navbar-header -->
 
@@ -344,8 +347,8 @@
               </address>
             </div>
             <div class="col-md-4 text-left">
-              <h3 style="margin-top: 1em;"><small>Start: <%= fromDate  %></small>
-              <br><small>End: <%= toDate  %></small>
+              <h3 style="margin-top: 1em;"><small>Start: <%= format2.format(fromDate)  %></small>
+              <br><small>End: <%= format2.format(toDate)  %></small>
               </h3>
               <ul>
                 <li><p class="text-muted">Capacity: <%= r.getCapacity() %></p></li>

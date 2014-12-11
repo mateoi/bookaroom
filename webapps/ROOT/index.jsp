@@ -236,7 +236,7 @@
                                 </div>
                             </div>
                             <div class="modal-body">
-                                <form role="form" action="/loginServ" method="get">
+                                <form role="form" action="/loginServ" method="post">
                                     <fieldset>
                                         <div class="form-group">
                                             <input class="form-control" placeholder="E-mail" name="email" type="text" autofocus>

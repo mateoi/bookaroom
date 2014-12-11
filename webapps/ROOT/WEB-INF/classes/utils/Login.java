@@ -13,7 +13,7 @@ import java.io.IOException;
 @WebServlet(name = "Login")
 public class Login extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("email");
         String password = request.getParameter("password");
         if(username!=null && password !=null && !username.equals("") && !password.equals("")) {

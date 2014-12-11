@@ -13,7 +13,12 @@
 <%@ page import="java.util.Date"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Calendar"%>
-
+<%
+	if(!LoginSystem.isAuthenticated(request.getSession(), request)) {
+		response.sendRedirect("/index.jsp");
+		return;
+	}
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -149,7 +154,7 @@
 								<fieldset>
 									<div class="form-group col-md-4">
 										<label>Date</label> <input class="form-control"
-											placeholder="Format: dd/mm/yy" id="date" name="date"
+											placeholder="Format: dd/mm/yyyy" id="date" name="date"
 											autofocus>
 									</div>
 
