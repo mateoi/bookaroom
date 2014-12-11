@@ -63,7 +63,7 @@ public class Search {
 		}
 	}
 	
-	private static List<Room> roomify(ResultSet rs) throws SQLException {
+	public static List<Room> roomify(ResultSet rs) throws SQLException {
 		List<Room> rooms = new ArrayList<Room>();
 		while (rs.next()) {
 			String name = rs.getString("name");
@@ -75,5 +75,4 @@ public class Search {
 		}
 		return rooms;
 	}
-
 }

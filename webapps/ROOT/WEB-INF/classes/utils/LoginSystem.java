@@ -20,7 +20,6 @@ public class LoginSystem {
         session.setAttribute("username",username);
         session.setAttribute("authsalt",System.currentTimeMillis());
         String cookieVal = session.getAttribute("username") + " "+ request.getRemoteAddr() +" "+ session.getAttribute("authsalt");
-        System.out.println("cookie val: " + cookieVal);
         Cookie auth = new Cookie("session_id", DigestUtils.md5Hex(cookieVal));
         response.addCookie(auth);
     }
@@ -38,11 +37,9 @@ public class LoginSystem {
         Cookie[] cookies = request.getCookies();
         if(cookies!=null) {
             for(Cookie c: cookies) if(c.getName().equals("session_id")) {
-                System.out.println("cookie found: "+c.getValue());
                 session_id = c.getValue();
             }
         }
-        System.out.println ("checking auth: " +authVal+" ---- "+session_id);
         return DigestUtils.md5Hex(authVal).equals(session_id);
     }
     public static boolean logIn(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
@@ -68,7 +65,5 @@ public class LoginSystem {
             }
     return success;
     }
-    public static boolean a(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-        return true;
-    }
+
 }

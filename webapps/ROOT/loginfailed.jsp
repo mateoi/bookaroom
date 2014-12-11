@@ -2,10 +2,8 @@
 <%  boolean isLoggedIn = false;
     if(LoginSystem.isAuthenticated(session, request)) {
         System.out.println("LOGEED IN AS: " + session.getAttribute("username"));
-//        out.println("<a href=\"logout.jsp\">Logout</a>");
         isLoggedIn = true;
     }
-//    else out.println("<a href=\"login.jsp\">Please Login</a>");
     out.println("<script src=\"js/jquery.js\"></script><script src='js/toastr.js'></script>" +
             "<script>window.setTimeout(function(){ toastr.options = {\n" +
             "  \"closeButton\": false,\n" +

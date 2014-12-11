@@ -145,7 +145,7 @@
 					<div class="panel panel-info">
 						<div class="panel-heading">Search</div>
 						<div class="panel-body">
-							<form role="form">
+							<form role="form" method="POST" action="results.jsp">
 								<fieldset>
 									<div class="form-group col-md-4">
 										<label>Date</label> <input class="form-control"
@@ -284,74 +284,6 @@
 	<!-- Custom Theme JavaScript -->
 	<script src="js/main.js"></script>
 
-	<%
-		String whiteboard = request.getParameter("wb");
-		String smartboard = request.getParameter("sb");
-		String projector = request.getParameter("proj");
-		String roundTable = request.getParameter("rt");
-		String laptop = request.getParameter("laptop");
-		boolean doBitmask = false;
-		int bitmask = 0;
-		if(whiteboard != null){
-			bitmask += 1;
-
-		}
-		bitmask*=2;
-		if(smartboard != null){
-			bitmask += 1;
-		}
-		bitmask*=2;
-		if(projector != null){
-			bitmask += 1;
-		}
-		bitmask*=2;
-		if(roundTable != null){
-			bitmask += 1;
-		}
-		bitmask*=2;
-		if(laptop != null){
-			bitmask += 1;
-		}
-		int month;
-		int day;
-		int year;
-		java.sql.Date fromDate = null;
-		java.sql.Date toDate = null;
-		Integer capacity = null;
-		try{
-
-			Date xfromDate = null;
-			Date xtoDate = null;
-			String inputDate  = request.getParameter("date");
-			DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-			format.setLenient(false);
-			Date date = format.parse(inputDate);
-			Calendar cal = Calendar.getInstance();
-			String fromTime = request.getParameter("time_from");
-			String toTime = request.getParameter("time_to");
-			Integer fromTimeInt = Integer.parseInt(fromTime.split(":")[0]);
-			Integer toTimeInt = Integer.parseInt(toTime.split(":")[0]);
-			cal.setTime(date);
-			cal.set(Calendar.HOUR, fromTimeInt);
-			xfromDate = cal.getTime();
-			cal.set(Calendar.HOUR, toTimeInt);
-			xtoDate = cal.getTime();
-			if(request.getParameter("capacity_min") != "")
-				capacity = Integer.parseInt(request.getParameter("capacity_min"));
-			fromDate = new java.sql.Date(xfromDate.getTime());
-			toDate = new java.sql.Date(xtoDate.getTime());
-			List<Room> rs = Search.search(fromDate,toDate,capacity,bitmask);
-			out.println(rs == null);
-			for(Room entry : rs){
-				out.println(entry.getName());
-			}
-		}catch(Exception e){
-			if(!(e instanceof NullPointerException))
-				out.println("<script> alert(\"Date format is broken. Proper format is dd/mm/yyyy \") </script>");
-			out.println(e);
-		}
-		
-	%>
 </body>
 
 </html>

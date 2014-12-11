@@ -5,7 +5,7 @@
 //        out.println("<a href=\"logout.jsp\">Logout</a>");
         isLoggedIn = true;
     }
-//    else out.println("<a href=\"login.jsp\">Please Login</a>");
+
 
 %>
 <!DOCTYPE html>
@@ -195,7 +195,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="bookings.html">
+                        <a href="bookings.jsp">
                             <div class="panel-footer">
                                 <span class="pull-left">My Bookings</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
