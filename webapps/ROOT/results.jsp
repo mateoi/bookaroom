@@ -231,7 +231,7 @@
 
 									<div class="form-group col-md-12">
 										<label>Time</label> 
-										<br><label>To:</label>
+										<br><label>From:</label>
 										<select class="form-control"
 											placeholder="From" id="time_to" name="time_from">
 											<option>00:00</option>
@@ -261,7 +261,7 @@
 										</select>
 									</div>
                 <div class="form-group col-md-12">
-										<br><label>From:</label>
+										<br><label>To:</label>
 										<select
 											class="form-control" placeholder="To" id="time_from"
 											name="time_to">
